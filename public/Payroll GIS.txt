@@ -1,0 +1,49 @@
+1. Gaji Pokok : Statik
+2. Presensi : Jumlah Hari Karyawan Masuk/Jumlah Hari Masuk * Value Presensi
+   - Value Presensi = Statik
+
+3. Tunjangan : Statik
+
+4. Weekday Lembur : > Jam 5 sore (17.00)
+   - THP = Gaji + Value Presensi + Tunjangan
+   - Upah Perjam = (75/100 * THP(Full)) * 1/173
+   * Misal Karyawan Lembu 2 Jam = > 120 Menit - 60 Menit = 60 Menit
+   * Dari jam 18.00 Lewat
+
+   - Perhitungan Jam Lembur : Jam + Menit/60 - 1
+   - Jam Lembur = Jumlah Jam dan Menit Lembur
+   - Menit Lembur = Jumlah Menit/60
+   - Hasil Perhitungan Menit Lembur = Dirounding 2 Digit Belakang Koma.
+   
+   if (Jam Lembur <= 1) {
+   - Rumus 1 Jam Pertama = 1 * (1,5 * Upah Perjam)
+   } else if (Jam Lembur > 1) {
+   - Rumus 1 Jam Pertama = Jumlah Jam Masuk + (Menit Konfersi Ke jam) * (1,5 * Upah Perjam)
+   }
+
+   - Rumus 1 Jam Berikutnya = Sisa Perkurangan dari 1 Jam Pertama (2 * Upah Perjam)
+   - Hari Kerja : Perjam = 75/100 * THP(Full) * 1/173
+
+5. Weekend Lembur :
+   if (Jumlah Jam Masuk <= 8) {
+   - Jam Lembur = Jumlah Jam Masuk Real
+   } else if (Jumlah Jam Masuk > 8) {
+   - Jam Lembur = Jumlah Jam Masuk - 1
+   }
+
+   if (Jam Lembur <= 8) {
+   - Rumus 8 Jam Pertama = Jam Lembur atau Max 8 * (2 * Upah Perjam)
+   } else if (Jam Lembur >= 9) {
+   - Rumus 9 Jam Pertama = Jam Lembur atau Max 1 * (3 * Upah Perjam)
+   } else if (Jam Lembur >= 10) {
+   - Rumus 10 Jam Pertama = Jam Lembur * (4 * Upah Perjam)
+   }
+   
+   Jika dia lembur di lebih dari 8 jam dan belum lewat dari jam 7 malam
+   Maka Jumlah Jam - 1
+
+   Jika dia lembur di lebih dari 8 jam dan lewat dari jam 7 malam
+   Maka Jumlah Jam - 2
+
+   Jika dia lembur kurang dari 8 jam dan lewat dari jam 7 
+   Maka tidak dikurangkan

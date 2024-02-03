@@ -1,0 +1,14 @@
+bpjs kesehatan:
+- umr bekasi = 5.200.000
+- jika thp karyawan < umr bekasi => 5% x umr bekasi
+- jika thp > umr bekasi => 5% x thp
+
+bpjs ketenagakerjaan:
+range = gapok + tunjangan
+umr jakarta = 4.900.000
+- range 0 s/d 2.499.999 => 3% x (gapok + tunjangan)
+- range 2.500.000 s/d umr jakarta => 3% x umr jakarta
+- range umr jakart sampai seterusnya => 3% x (gapok + tunjangan)
+
+perhitungan gaji:
+- gapok + tunjangan + presensi + lembur - bpjs kesehatan - bpjs ketenagakerjaan
